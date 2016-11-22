@@ -164,7 +164,7 @@ bp:
 ; cleaning using the bad pixel mask
 ;********************************************
 
-bp_mask=MRDFITS('~/WISPIPE/aXe/CONFIG/bp_mask_v5.fits',0,/silent)
+bp_mask=MRDFITS(getenv('WISPIPE')+'/aXe/CONFIG/bp_mask_v5.fits',0,/silent)
 bp_mask_2=bp_mask
 
 
