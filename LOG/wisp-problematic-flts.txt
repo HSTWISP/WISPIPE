@@ -174,3 +174,23 @@ G102   icdxd6lqq_flt.fits
 453: F110W & F160W: persistence from grism images in many images. Leaving as is for now
         G102: Minor issue with id1k3lftq_flt.fits, leaving as is for now. 
 456: G160W: id1k0fokq_flt.fits satellite trail. In corner, so leaving as is. G102: id1k0dnvq_flt.fits higher background, but leaving as is. 
+
+460:
+G141 id1kadxoq_flt.fits (bad satellite trail?)
+F110W: id1ka9o4q_flt.fits (satellite trail)
+
+462: F814W optical ghost in all of them.
+468: F110w: id1k22mxq_flt.fits satellite trail
+478: G141: id1k0ma4q_flt.fits satelite trail
+480: F814W id1k1qe5q_flt.fits has a partial trail, leaving for now.
+481: F814W id1k1jgmq_flt.fits has a partial trail, leaving for now.
+F606W: id1k1kgpq_flt.fits has a partial trail, leaving for now.
+F110W: id1k1lh3q_flt.fits has trail, removing. 
+482: F814W and F606W (ALL) id1k2gfiq_flt.fits and id1k2gfmq_flt.fits may have dragons breath
+or something else? id1k2hfpq_flt.fits id1k2hfsq_flt.fits
+id1k2hftq_flt.fits. Leaving for now
+483: F814W id1k59azq_flt.fits has partial trail, leaving for now.
+F160W have strong persistence from grism exposures id1k63yiq_flt.fits
+id1k64ysq_flt.fits leaving for now
+F110W a lot also have strong persistence from our grism exposures
+

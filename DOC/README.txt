@@ -2,6 +2,7 @@
  Based on Ivano Baronchelli's howtolaunch.txt and
  Sophia Dai's wispipe-dr-guideline.txt
  Marc Rafelski October 2016
+ Modified by I.B Dec. 2016 for version 6.2
 
 New update: Now use the bash shell for everything. (Both Euereka and astroconda)
 
@@ -74,18 +75,7 @@ one or the other.
  $PATH/data/Par356
 
  
- 3) In your .bashrc and .cshrc files, you have to have specific paths set. 
- .cshrc:
- 
- setenv WISPIPE /Users/mrafelski/WISPIPE/
- setenv WISPDATA /Users/mrafelski/data/wisp/
- setenv iref ~/data/iref/
- setenv crrefer ~/data/synphot/
- setenv mtab ~/data/synphot/mtab/
- setenv crotacomp ~/data/synphot/comp/ota/
- setenv crwfc3comp ~/data/synphot/comp/wfc3/
- 
- .bashrc:
+ 3) In your .bashrc, you have to have specific paths set. 
  
  export WISPIPE=/Users/mrafelski/WISPIPE/
  export WISPDATA=/Users/mrafelski/data/wisp/
@@ -115,18 +105,11 @@ if it is not necessary to set the paths of the .cshrc or not.
  ftp.stsci.edu/cdbs/iref
  Note: You want to get the latest darks from Marc Rafelski
 
- 6) tweakreg needs to have interactive = False set as
- your default before running the pipeline. You can do this by
- entering pyraf, importing astrodrizzle, and then eparing tweakreg,
- and setting interative to False.
- MR NOTE: Do we want to change this in the pipeline to specify this so
- this doesn't depend on a system default???
-
- 7) While we use Ureka, you need to install pyregion seperatly. e.g.:
+ 6) While we use Ureka, you need to install pyregion seperatly. e.g.:
  While Ureka is loaded, type:
  pip install pyregion
 
- 8) Make sure you have the IDLastro library installed and up to date:
+ 7) Make sure you have the IDLastro library installed and up to date:
  https://github.com/wlandsman/IDLAstro
  Needs things like modfits, etc.
 
@@ -145,8 +128,7 @@ if it is not necessary to set the paths of the .cshrc or not.
  PREPARATION
  -------------------------------
  1) Before running everything, check the kind of data you want to
- process. At this moment we are only able to process data with both
- the IR filters and grisms observed. UVIS data may or may not be present.
+ process. If UVIS data are present, they need to be pre-processed.
 
  2) Check input exposures using wispipe_initialcheck.sh
   (or use findf.pro in IDL directory). 
@@ -163,13 +145,9 @@ mkdir badframes
 mv icdxd3l2q* badframes
 
 Notes on what programs to use when (but read below):
-
-For fields with both IR filters and no UVIS, use wispipe.sh
-For field with 2 UVIS filters, use wispipe_uvis.sh
-For field with 1 UVIS filter, use wispipe_uvis_single.sh (may be obsolete as the only difference is in tweakreg_uvis_single.py and make_uvis_helpfile.py) 
-For field with only G141 filter (no G102), use wispipe_g141.sh
-For field with only G141 filter (no G102) and only 1 exposure (no tweakreg needed), use wispipe_g141_single.sh
-For field with F140 + G102 + G141 filters, use wispipe_F140.sh
+From Version 6.2, wispipe_6.2.sh can be used for all the different
+datasets. However, if uvis data are present, remember to pre-process
+them before running wispipe_6.2.
 
 
  -------------------------------
@@ -177,17 +155,17 @@ For field with F140 + G102 + G141 filters, use wispipe_F140.sh
  -------------------------------
 
  All in  a bash shell, Eureka environment
- PROGRAM TO USE: wispipe.sh
+ PROGRAM TO USE: wispipe_6.2.sh
 
  If uvis data are not present, the pipeline can be run as follows:
  1) cd to the path where the WISPIPE folder is installed
     > cd $WISPIPE
  2) run the current version of the pipeline
-    > source wispipe.sh Par > LOG/log_Par_6.1.log
+    > source wispipe_6.2sh Par > LOG/log_Par_6.1.log
 
  Example:
     > cd $WISPIPE
-    > source wispipe.sh Par302 > LOG/log_Par302_6.1.log
+    > source wispipe_6.2.sh Par302 > LOG/log_Par302_6.2.log
 
  The data reduction can be launched without interruptions among one
  field and the next, using the program "multiple_par.sh", saved in
@@ -204,8 +182,8 @@ Note: Can use multiple_par.sh to run multiple at once; edit as appropriate from 
 
  Preprocessing in bash, astroconda  environment,
  Reduction in  a bash shell, Eureka environment
- PROGRAM TO USE:, uvis_preprocess.pro or multiple_uvis_preprocess.pro,
- wispipe_uvis.sh
+ PROGRAM TO USE:, IDL/uvis_preprocess.pro or IDL/multiple_uvis_preprocess.pro,
+ wispipe_6.2.sh
 
  FIRST STEP: preprocess uvis files (bash, astroconda)
  To preprocess the uvis data, you can run it either individually on a
@@ -233,14 +211,14 @@ Note: You can also run just calwf3 with this (e.g. if you ran CTE
 corrections, but didn't end up having the darks to calibrate them. In
 that case, use the /calwf3only flag. 
 
- SECOND STEP: reduction (tcsh, Eureka)
+ SECOND STEP: reduction (bash, Eureka)
  The reduction can be run as in the case 1 (no uvis data present),
- but using the wispipe_uvis.sh program instad. Again, the
- reduction of multiple fields in a row can be obtained using
- "multiple_par.sh", but ONLY AFTER the uvis data are already
- preprocessed in a bash shell and astroconda environment.
+ using the wispipe_6.2.sh program. The  reduction of multiple fields
+ in a row can be obtained using "multiple_par.sh", but ONLY AFTER
+ the uvis data are already preprocessed in a bash shell and astroconda
+ environment.
 
-    > source wispipe_uvis.sh Par302 > LOG/log_Par302_6.1.log
+    > source wispipe_6.2.sh Par302 > LOG/log_Par302_6.2.log
 
 Note: May use  multiple_uvis_preprocess,multiple_par.sh
  (if desired, in DOC)
