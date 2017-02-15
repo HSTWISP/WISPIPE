@@ -28,5 +28,11 @@ Par427 - UVIS wierd bright mark in middle (dragons breath?) will affect photomet
 Par453 - optical ghosts in UVIS from bright stars
 Par454 - UVIS: Leftover satelite trails, other wierd extended flux regions. Persistence in IR data
 Par456 -
-
-
+Par460 - Problems in going from flt_clean to flt_clean_crclean for F110W. NOT USABLE RIGHT NOW!
+Par462 - id1k93ojq_flt_clean_crclean.fits had issue with TWEAKREG Not enough matches (< 15) found for input image. Not sure why. 
+Par468 - id1k23naq_flt_clean_crclean.fits had issue with TWEAKREG Not enough matches (< 15) found for input image. Not sure why. 
+Par478 - 
+Par480 - IR:  Spectral Line Persistence in F110W and F160W
+Par481 - IR:  Very minor Spectral Line Persistence in F110W and F160W
+Par482 - UVIS has major issue- bright scattered light of some sort? Almost like Dragons breath, but different. 
+Par483 - IR:  Spectral Line Persistence in F110W and F160W
