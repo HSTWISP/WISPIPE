@@ -276,11 +276,17 @@ def main():
             os.chdir(owd) 
             aXe_noback_drizzle_f140()
         else:
-            print 'Extracting with F160W filter ............................' 
-            iraf.iolprep(mdrizzle_image="F160W_drz.fits",input_cat="cat_F160.cat",useMdriz=False)
-            os.chdir(owd) 
-            aXe_noback_drizzle_f160()
-
+            if os.path.isfile("F160W_drz.fits"):
+                print 'Extracting with F160W filter ............................' 
+                iraf.iolprep(mdrizzle_image="F160W_drz.fits",input_cat="cat_F160.cat",useMdriz=False)
+                os.chdir(owd) 
+                aXe_noback_drizzle_f160()
+            else:
+                if os.path.isfile("F110W_drz.fits"):
+                    print 'Extracting with F110W filter ............................' 
+                    iraf.iolprep(mdrizzle_image="F110W_drz.fits",input_cat="cat_F110.cat",useMdriz=False)
+                    os.chdir(owd) 
+                    aXe_noback_drizzle_f160()
     else:
         print "==========================================="
         print "Field not covered by observations in grism "
