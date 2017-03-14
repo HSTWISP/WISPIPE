@@ -55,7 +55,7 @@ end
 ; No keywords are required anymore.
  
 ;pro mastdr2_IB,g141=g141,f140=f140, id=id
-pro mastdr2_IB, id=id
+pro mastdr2, id=id
 ; id=[xyz,nlm,...] --> List of id's to process. Example: id=[12,432,23]
   
 ;if n_elements(id) lt 1 then begin
