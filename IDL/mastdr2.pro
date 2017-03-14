@@ -178,7 +178,7 @@ LINE_UVIS1=8
 LINE_UVIS2=9
 ;////////////////////////////////////////////////
 uvisfilter=[0]
-IF UV_OBS eq 'YES' then readcol,'$WISPDATA/axe/par'+strtrim(i,2)+'/DATA/UVIS/NOTES_ON_UVIS_FILTERS.txt',skipline=LINE_UVIS1,uvisfilter,f='x,a'
+IF UV_OBS eq 'YES' then readcol,'$WISPDATA/aXe/Par'+strtrim(i,2)+'/DATA/UVIS/NOTES_ON_UVIS_FILTERS.txt',skipline=LINE_UVIS1,uvisfilter,f='x,a'
 
 ; Check
 ;;;;   IF UV_OBS eq 'YES' and uvisfilter[0] ne 'UVIS' then begin
@@ -198,7 +198,7 @@ IF UV_OBS eq 'YES' then readcol,'$WISPDATA/axe/par'+strtrim(i,2)+'/DATA/UVIS/NOT
 ;if uvisfilter[0] ne 'UVIS' then begin
 if UV_OBS eq 'YES' then begin
  IF UV1_OBS eq 'YES'THEN uvis1 = strlowcase(uvisfilter[0])
- IF UV1_OBS eq 'YES'THEN uvis2 = strlowcase(uvisfilter[1])
+ IF UV2_OBS eq 'YES'THEN uvis2 = strlowcase(uvisfilter[1])
  if UV1_OBS eq 'YES' then begin
   spawn, 'rsync -a $WISPDATA/aXe/Par'+strtrim(i,2)+'/DATA/UVIS/IRtoUVIS/UVIS1_UVIS_drz.fits  '+mastpath+'par'+strtrim(i,2)+'/hlsp_wisp_hst_wfc3_par'+strtrim(i,2)+'-40mas_'+strtrim(uvis1,2)+'_v6.2_drz.fits'
   spawn, 'rsync -a $WISPDATA/aXe/Par'+strtrim(i,2)+'/DATA/UVIS/UVIStoIR/UVIS1_IR_drz.fits  '+mastpath+'par'+strtrim(i,2)+'/hlsp_wisp_hst_wfc3_par'+strtrim(i,2)+'-130mas_'+strtrim(uvis1,2)+'_v6.2_drz.fits'
@@ -252,7 +252,7 @@ IF G102_OBS eq 'YES' THEN BEGIN
   foo0 = strmid(name, 0, fooa+1)     ;path
   foo1 = strmid(name, foob+1,fooe-foob-1)   ;file name w/o grism info and '.dat'
   foo2 = strmid(name, fooa+1,fooe-fooa-1)   ;file name w/o '.dat'
-  inputname = 'par'+strtrim(i,2)+'_BEAM_'+foo1
+  inputname = 'Par'+strtrim(i,2)+'_BEAM_'+foo1
   result=chname(inputname,/oned,/g102,outputname)
   spawn, 'mv '+foo0+foo2+'.dat '+foo0+outputname+'.dat'
  endfor
@@ -268,7 +268,7 @@ IF G141_OBS eq 'YES' THEN BEGIN
   foo0 = strmid(name, 0, fooa+1)     ;path
   foo1 = strmid(name, foob+1,fooe-foob-1)   ;file name w/o grism info and '.dat'
   foo2 = strmid(name, fooa+1,fooe-fooa-1)   ;file name w/o '.dat'
-  inputname = 'par'+strtrim(i,2)+'_BEAM_'+foo1
+  inputname = 'Par'+strtrim(i,2)+'_BEAM_'+foo1
   result=chname(inputname,/oned,/g141,outputname)
   spawn, 'mv '+foo0+foo2+'.dat '+foo0+outputname+'.dat'
  endfor
@@ -282,7 +282,7 @@ for k=0, n_elements(spec1)-1 do begin
    fooe = strpos(name, '.', /reverse_search)
    foo0 = strmid(name, 0, fooa+1)     ;path
    foo1 = strmid(name, foob+1,fooe-foob-1)   ;file name w/o '.dat'
-   inputname = 'par'+strtrim(i,2)+'_BEAM_'+foo1
+   inputname = 'Par'+strtrim(i,2)+'_BEAM_'+foo1
    result=chname(inputname,/oned,/g102,/g141,outputname)
    spawn, 'mv '+foo0+inputname+'.dat '+foo0+outputname+'.dat'
 endfor
@@ -298,7 +298,7 @@ IF G102_OBS eq 'YES' THEN BEGIN
   foo0 = strmid(name, 0, fooa+1)     ;path
   foo1 = strmid(name, foob+1,fooe-foob-1) ;file name w/o grism info and '.fits'
   foo2 = strmid(name, fooa+1,fooe-fooa-1) ;file name w/o '.dat'
-  inputname = 'par'+strtrim(i,2)+'_BEAM_'+foo1
+  inputname = 'Par'+strtrim(i,2)+'_BEAM_'+foo1
   result=chname(inputname,/g102,outputname)
   spawn, 'mv '+foo0+foo2+'.fits '+foo0+outputname+'.fits'
  endfor
@@ -314,7 +314,7 @@ IF G141_OBS eq 'YES' THEN BEGIN
   foo0 = strmid(name, 0, fooa+1)     ;path
   foo1 = strmid(name, foob+1,fooe-foob-1)   ;file name w/o grism info and '.fits'
   foo2 = strmid(name, fooa+1,fooe-fooa-1)   ;file name w/o '.dat'
-  inputname = 'par'+strtrim(i,2)+'_BEAM_'+foo1
+  inputname = 'Par'+strtrim(i,2)+'_BEAM_'+foo1
   result=chname(inputname,/g141,outputname)
   spawn, 'mv '+foo0+foo2+'.fits '+foo0+outputname+'.fits'
  endfor
