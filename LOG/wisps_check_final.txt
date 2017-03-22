@@ -34,5 +34,5 @@ Par468 - id1k23naq_flt_clean_crclean.fits had issue with TWEAKREG Not enough mat
 Par478 - 
 Par480 - IR:  Spectral Line Persistence in F110W and F160W
 Par481 - IR:  Very minor Spectral Line Persistence in F110W and F160W
-Par482 - UVIS has major issue- bright scattered light of some sort? Almost like Dragons breath, but different. 
+Par482 - UVIS has major issue- strong Dragons breath
 Par483 - IR:  Spectral Line Persistence in F110W and F160W
