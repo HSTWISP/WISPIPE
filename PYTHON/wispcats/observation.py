@@ -33,7 +33,7 @@ class Observation(object):
         self.wisppar.create_output_directory()
 
         # write output to file
-        orig_stdout = sys.stdout
+        self.orig_stdout = sys.stdout
         myout = file(os.path.join(self.wisppar.outdir, '%s_log.txt'%par), 'w')
         sys.stdout = myout
         print self.wisppar
@@ -71,4 +71,6 @@ class Observation(object):
         catalog = Catalog(self.wisppar, self.filters)
         catalog.write_cat()
         catalog.create_region_files()
+        # clear stdout
+        sys.stdout = self.orig_stdout
 
