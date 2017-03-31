@@ -23,7 +23,11 @@ def createcatalog(field):
                                            computekernel=computekernel)
     obs.process_images()
 
-    obs.build_catalog()
+    try:
+        obs.build_catalog()
+    except ValueError:
+        sys.stdout = obs.orig_stdout
+        print 'Segmap generation failed for %s. Skipping %s.'%(par,par)
 
 
 def create_multiple_catalogs(fields):
