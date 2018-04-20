@@ -104,7 +104,11 @@ IF strlowcase(g141_list[0]) eq 'none' then numG141 =0
 ; ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-
+wave=0.
+flux=0.
+ferr=0.
+contam=0.
+zeroth=0.
 
 
 
@@ -440,11 +444,16 @@ pet_b = 1.60318*pet_b
   zeroth=[g102_zo[0:dim1-(cut+1)],g141_zo[cut:dim2-1]]
  ENDIF 
  IF (SPC_IND[0] NE -1) and (SPC_IND2[0] eq -1) THEN BEGIN
-  wave=G102_wave_trim[cut:dim2-1]
-  flux=G102_flux_trim[cut:dim2-1]
-  ferr=G102_ferr_trim[cut:dim2-1]
-  contam=G102_contam_trim[cut:dim2-1]
-  zeroth=g102_zo[cut:dim2-1]
+  ; NOTE: As suggested by Hugh Dickinson,
+  ; inside this IF statement, "dim2" must be 
+  ; sobstituted by "dim1". When only G102 
+  ; is present, the size of the G102 spectrum
+  ; (i.e. dim1) must be considered.
+  wave=G102_wave_trim[cut:dim1-1]
+  flux=G102_flux_trim[cut:dim1-1]
+  ferr=G102_ferr_trim[cut:dim1-1]
+  contam=G102_contam_trim[cut:dim1-1]
+  zeroth=g102_zo[cut:dim1-1]
  endif
  IF (SPC_IND[0] eq -1) and (SPC_IND2[0] NE -1) then begin
   wave=[G141_wave_trim[cut:dim2-1]]
